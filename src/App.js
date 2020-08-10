@@ -1,16 +1,10 @@
 import React from "react";
-import styled from "styled-components";
-
-const Heading = styled.h1`
-  width: 100px;
-  height: 100px;
-  background-color: mediumseagreen;
-`;
+import Page from "./Page";
 
 function App() {
   return (
     <>
-      <Heading>hihi</Heading>
+      <Page />
     </>
   );
 }
