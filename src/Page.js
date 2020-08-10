@@ -27,7 +27,7 @@ class Page extends React.Component {
 
     return (
       <>
-        <Button onClick={this.handleClick}>press me</Button>
+        <Button onClick={this.handleClick}>I am a button</Button>
         {repos.map(r => {
           return <p key={r.id}>{r.name}</p>;
         })}

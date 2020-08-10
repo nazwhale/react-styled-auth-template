@@ -25,3 +25,12 @@ export function makeAuthedReq(method, path, params, authTokenId) {
       console.log("🤷‍♂️", error);
     });
 }
+
+export function fetchFromAPI(method, path, params, authTokenId) {
+  const apiUrl = `${process.env.REACT_APP_API_URL}${path}`;
+
+  return axios
+    .get(apiUrl)
+    .then(res => res.data)
+    .catch(err => console.error(err));
+}
