@@ -1,13 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { Button } from "./components";
 
 import { getReposPromise } from "./api";
-
-const GreenBox = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: mediumseagreen;
-`;
 
 class Page extends React.Component {
   state = {
@@ -20,6 +14,10 @@ class Page extends React.Component {
       .then(data => this.setState({ repos: data }));
   }
 
+  handleClick = () => {
+    console.log("💥");
+  };
+
   render() {
     const { repos } = this.state;
 
@@ -29,10 +27,9 @@ class Page extends React.Component {
 
     return (
       <>
-        <GreenBox />
+        <Button onClick={this.handleClick}>press me</Button>
         {repos.map(r => {
-          console.log(r.name);
-          return <p>{r.name}</p>;
+          return <p key={r.id}>{r.name}</p>;
         })}
       </>
     );
