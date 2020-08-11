@@ -34,7 +34,7 @@ export default class Login extends Component {
     password: ""
   };
 
-  componentWillMount() {
+  componentDidMount() {
     if (Auth.loggedIn()) this.props.history.replace("/");
   }
 
@@ -46,9 +46,19 @@ export default class Login extends Component {
     });
   };
 
-  handleSubmit = event => {
-    alert("Your password is: " + this.state.password);
+  handleSubmit = async event => {
     event.preventDefault();
+    const { email, password } = this.state;
+
+    const output = await Auth.login(email, password);
+    console.log("Auth.login output", output);
+
+    // .then(res => {
+    //   alert("logged in! 🎉" + res);
+    // })
+    // .catch(err => {
+    //   alert(err);
+    // });
   };
 
   render() {
