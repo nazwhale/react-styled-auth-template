@@ -6,14 +6,6 @@ export default class AuthService {
       email,
       password
     });
-    // .then(response => {
-    //   console.log("rrr", response);
-    //   // return Promise.resolve(response);
-    // })
-    // .catch(error => {
-    //   console.log("eee", error);
-    //   // return error;
-    // });
   };
 
   loggedIn() {

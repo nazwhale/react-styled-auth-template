@@ -50,16 +50,12 @@ export default class Login extends Component {
     event.preventDefault();
     const { email, password } = this.state;
 
-    const output = await Auth.login(email, password);
-    console.log("Auth.login output", output);
-
-    // .then(res => {
-    //   alert("logged in! 🎉" + res);
-    // })
-    // .catch(err => {
-    //   alert(err);
-    // });
-  };
+    try {
+      await Auth.login(email, password);
+    } catch(err) {
+      alert(err)
+    }
+  }
 
   render() {
     return (

@@ -6,6 +6,11 @@ import App from "./App";
 import Login from "./components/login/Login";
 import * as serviceWorker from "./serviceWorker";
 
+// See
+// https://reactrouter.com/web/example/auth-workflow
+// For making protected routes
+
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>

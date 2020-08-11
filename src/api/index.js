@@ -11,22 +11,27 @@ export async function getReposPromise() {
     .catch(err => console.error(err));
 }
 
-export async function fetchFromAPI(method, path, params) {
+export function fetchFromAPI(method, path, params) {
   const url = `${process.env.REACT_APP_API_URL}${path}`;
 
-  await axios({
+  // axios returns a Promise
+  //
+  return axios({
     method,
     url,
     data: JSON.stringify(params)
   })
-    .then(function(rsp) {
-      console.log("✅", rsp);
-      // return Promise.resolve(rsp);
-      return rsp;
-    })
-    .catch(function(error) {
-      console.log("🤷‍♂️", error);
-      // return Promise.reject(error);
-      return error;
-    });
+    // Can handle 401's here
+    // remove any old cookies, redirect to /login
+    //
+    // .catch(error) {
+    //
+    //   if (err === 401) {
+    //     // redirect
+    //     console.log("🔒", user not authenticated, redirecting);
+    //   }
+    //
+    //    // persist the error for downstream code to handle
+    //    throw error
+    // });
 }
