@@ -1,4 +1,4 @@
-import { fetchFromAPI } from "../../api";
+import { fetchFromAPI } from "../api";
 
 export default class AuthService {
   login = (email, password) => {

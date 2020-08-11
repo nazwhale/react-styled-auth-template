@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { APIError } from "../api";
 
-import AuthService from "./AuthService";
-
+import AuthService from "../auth";
 const Auth = new AuthService();
 
 const Container = styled.div`
@@ -31,16 +31,12 @@ const FormSubmit = styled.input`
 export default class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    error: null
   };
-
-  componentDidMount() {
-    if (Auth.loggedIn()) this.props.history.replace("/");
-  }
 
   handleInputChange = event => {
     const { value, name } = event.target;
-
     this.setState({
       [name]: value
     });
@@ -51,13 +47,21 @@ export default class Login extends Component {
     const { email, password } = this.state;
 
     try {
-      await Auth.login(email, password);
-    } catch(err) {
-      alert(err)
+      const rsp = await Auth.login(email, password);
+      console.log("rsp", rsp);
+      this.setState({ error: null });
+    } catch (err) {
+      let error = new APIError({ data: "Network error" });
+      if (err.response != null) {
+        error = new APIError(err.response);
+      }
+      this.setState({ error });
     }
-  }
+  };
 
   render() {
+    const { error } = this.state;
+
     return (
       <Container>
         <h1>Log in</h1>
@@ -84,7 +88,13 @@ export default class Login extends Component {
           <FormSubmit type="submit" value="Submit" />
         </Form>
 
-        <Link to="/" style={{ textDecoration: "none" }}>
+        {error != null && (
+          <p>
+            Error: <code>{`${error.status}: ${error.data}`}</code>
+          </p>
+        )}
+
+        <Link to="/signup" style={{ textDecoration: "none" }}>
           <p>I'm new here</p>
         </Link>
       </Container>

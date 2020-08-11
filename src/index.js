@@ -3,13 +3,18 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import App from "./App";
-import Login from "./components/login/Login";
+import Login from "./pages/login";
+import SignUp from "./pages/signup";
 import * as serviceWorker from "./serviceWorker";
 
-// See
+// TODO: protected routes
+//
+// See:
 // https://reactrouter.com/web/example/auth-workflow
 // For making protected routes
-
+//
+// tldr; middleware for checking user is authenticated before a page load
+//       for routes you should be authed to view
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +22,7 @@ ReactDOM.render(
       <div>
         <Route exact path="/" component={App} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
       </div>
     </Router>
   </React.StrictMode>,
