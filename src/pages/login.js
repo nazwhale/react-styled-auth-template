@@ -32,6 +32,7 @@ export default class Login extends Component {
   state = {
     email: "",
     password: "",
+    loginDeets: null,
     error: null
   };
 
@@ -48,8 +49,8 @@ export default class Login extends Component {
 
     try {
       const rsp = await Auth.login(email, password);
-      console.log("rsp", rsp);
-      this.setState({ error: null });
+      this.setState({ loginDeets: rsp, error: null });
+      this.props.history.push("/app");
     } catch (err) {
       let error = new APIError({ data: "Network error" });
       if (err.response != null) {

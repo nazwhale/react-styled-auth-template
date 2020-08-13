@@ -1,6 +1,16 @@
-## CRA with Styled components Template
+# Template: React App with Styled Components + Authentication
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Adding a font
+
+1. Go to [Google Fonts](https://fonts.google.com/)
+2. Select some styles
+3. Copy the embed `<link>`
+4. Pop it in `public/index.html`
+5. Add the font to `src/theme/index.css` if global
+
+More info on setting up fonts in React projects [in this blog post](https://scotch.io/@micwanyoike/how-to-add-fonts-to-a-react-project).
 
 ## Available Scripts
 

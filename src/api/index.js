@@ -13,7 +13,7 @@ export class APIError {
 
 // Can use the Github openAPI to test:
 // "https://api.github.com/users/nazwhale/repos"
-export async function getReposPromise() {
+export function getRepos() {
   const apiUrl = `${process.env.REACT_APP_API_URL}/repos`;
 
   return axios
@@ -25,32 +25,21 @@ export async function getReposPromise() {
 export function fetchFromAPI(method, path, params) {
   const url = `${process.env.REACT_APP_API_URL}${path}`;
 
-  // axios returns a Promise
-  //
   return axios({
     method,
     url,
-    data: JSON.stringify(params)
+    data: JSON.stringify(params),
+    withCredentials: true
   }).catch(error => {
     // Handle unauthenticated request
-    // remove any old cookies, redirect to /login
+    //
+    // Not sure how best to handle both here and in my protected route 🤔
+    // Current plan is a bit jank, as we'd have two bits of code trying to
+    // do the same redirect.
     if (error.response != null && error.response.status === 401) {
-      console.log("To be redirected and cookie-cleaned...");
+      window.location.pathname = "/login";
+    } else {
+      throw error;
     }
-
-    throw error;
   });
-
-  // Can handle 401's here
-  //
-  // .catch(error) {
-  //
-  //   if (err === 401) {
-  //     // redirect
-  //     console.log("🔒", user not authenticated, redirecting);
-  //   }
-  //
-  //    // persist the error for downstream code to handle
-  //    throw error
-  // });
 }
