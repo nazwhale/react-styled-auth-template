@@ -2,10 +2,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Creating a `.env` file
+## Setup
+
+### 1. Create a `.env` file
 
 1. `touch .env.local`
 2. `echo REACT_APP_API_URL=http://localhost:8000/ >> .env.local`
+
+### 2. Run `yarn`
+
+`yarn`
+
+### 3. Run the repo
+
+`yarn start`
 
 ## Adding a font
 
