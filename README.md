@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Creating a `.env` file
+
+1. `touch .env.local`
+2. `echo REACT_APP_API_URL=http://localhost:8000/ >> .env.local`
+
 ## Adding a font
 
 1. Go to [Google Fonts](https://fonts.google.com/)

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Emoji } from "../components";
+import { Emoji } from "../components";
 import AuthService from "../auth";
 const Auth = new AuthService();
 
